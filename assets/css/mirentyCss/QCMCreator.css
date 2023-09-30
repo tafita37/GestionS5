@@ -1,0 +1,91 @@
+#add-question 
+{
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+}
+#QCMSubmition
+{
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;
+}
+/* Styles pour le conteneur principal */
+.container-fluid {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text
+}
+
+/* Styles pour le titre "Créer un QCM" */
+.creation {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Styles pour le conteneur des questions */
+#questions-container {
+    margin-bottom: 20px;
+}
+
+/* Styles pour chaque question */
+.question {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Styles pour les champs de texte des questions */
+.question input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Styles pour le bouton "Ajouter une question" */
+#add-question {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Styles pour le bouton "Soumettre" */
+#QCMSubmition {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Styles pour les boutons lorsqu'ils sont survolés */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Styles pour les cases à cocher */
+.answers input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Espacement entre les éléments de réponse */
+.answers br {
+    margin: 5px 0;
+}
