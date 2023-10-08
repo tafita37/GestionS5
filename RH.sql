@@ -55,10 +55,14 @@
             id_ville int,
             FOREIGN KEY (id_ville) REFERENCES ville(id_ville)
         );
-    
+
+        insert into adresse(nom_adresse,distance_entreprise, id_ville) values('Andoharanofotsy', 12, 1);
+        insert into adresse(nom_adresse,distance_entreprise, id_ville) values('Ambohipo', 15, 1);
+        insert into adresse(nom_adresse,distance_entreprise, id_ville) values('Andohamandroseza', 15, 1);
+
     -- Personne
         create table personne(
-            id_personne serial primary key, 
+            cccccc serial primary key, 
             nom_personne varchar(30) not null, 
             prenom_personne varchar(30) not null, 
             email_personne varchar(30) not null, 
@@ -71,9 +75,7 @@
             asUnCasier int not null
         );
 
-        -- Données
-            insert into personne values(default, 'RAKOTO', 'Jean', 'jean@gmail.com', '034 00 000 00', 1, '2003-09-28 22:00'::timestamp, null, 0, 1, 1);
-
+        
     -- Nationalite de personne
         create table personne_nationalite(
             id_personne_nationalite serial primary key, 
@@ -137,13 +139,14 @@
         date_annonce timestamp,
         id_diplome int references diplome(id_diplome),
         id_filiere int references filiere(id_filiere),
-        experience_requis varchar(255) not null,
+        experience_requis numeric not null,
         distance_entreprise numeric not null,
         duree_contrat integer not null default 0,
         salaire_min real,
         salaire_max real,
         nombre_employe integer,
-        date_depot_final timestamp
+        date_depot_final timestamp,
+        image_annonce varchar(20)
     );
     
     create table besoin_genre(
@@ -213,4 +216,9 @@ CREATE TABLE reponse(
     reponse text, 
     valeur_verite integer CHECK (valeur_verite IN (0, 1)), 
     id_question int references question(id_question) 
+);
+
+CREATE table nationalite(
+    id_nationalite serial primary key,
+    nom varchar(50)
 );

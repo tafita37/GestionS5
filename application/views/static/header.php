@@ -4,6 +4,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>HumanResources &mdash; Free Business Website Template by Colorlib</title>
   <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
+
+  <!-- Font Icon cv -->
+  <link rel="stylesheet" href="<?php echo base_url("assets/fonts/material-icon/css/material-design-iconic-font.min.css"); ?>">
+   <link rel="stylesheet" href="<?php echo base_url("assets/vendor/nouislider/nouislider.min.css"); ?>">
+
+   <!-- Main css cv-->
+   <link rel="stylesheet" href="<?php echo base_url("assets/css/ajoutCv.css"); ?>">
 </head>
 <body>
 
@@ -30,6 +37,7 @@
                 <a href="index.html" class="animsition-link">Home</a>
               </li>
               <li><a href="about.html" class="animsition-link">About</a></li>
+              <li><a href="<?php echo(site_url('Welcome/listeCv')); ?>" class="animsition-link">Listes cv</a></li>
               <li>
                 <a href="services.html" class="animsition-link">Services</a>
                 <ul>
@@ -53,6 +61,7 @@
                 </ul>
               </li>
               <li><a href="blog.html" class="animsition-link">Blog</a></li>
+              <li><a href="#" class="animsition-link">Liste cv</a></li>
               <li><a href="contact.html" class="animsition-link">Contact</a></li>
             </ul> <!-- .templateux-menu -->
 
