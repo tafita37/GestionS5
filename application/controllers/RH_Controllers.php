@@ -14,17 +14,11 @@ class RH_Controllers extends CI_Controller
 	{
 		$qcm = $this->input->post();
 		if (empty($qcm)) {
-			show_error("erreur mirenty ");
+			show_error("qcm was empty ");
 		}
-
-
 
 		$this->load->model("CRUD_Model");
 		$qr = $this->CRUD_Model->transformArray($qcm);
-
-		// $prettyPrintedArray = json_encode($this->CRUD_Model->transformArray($qcm), JSON_PRETTY_PRINT);
-
-		// echo '<pre>' . $prettyPrintedArray . '</pre>';
 
 		$this->db->trans_start();
 		$fiche = array(
@@ -32,24 +26,25 @@ class RH_Controllers extends CI_Controller
 			'date_creation' => date('Y-m-d'),
 			'id_service' => $qcm['departement'],
 		);
-		$query1 = $this->CRUD_Model->insertFiche($fiche);
+		echo $this->CRUD_Model->insertFiche($fiche);
+		$query1 = $this->DaoM->lastRow("fiche_qcm","id_fiche_qcm");
 		foreach ($qr as $questions) {
 			$questionsInsert = array(
 				'question' => $questions['question'],
 				'nbpoint' => $questions['nbpoint'],
-				'id_fiche_qcm' => $query1->last_row()['id_fiche_qcm']
+				'id_fiche_qcm' => $query1['id_fiche_qcm']
 			);
-
-			$query2 = $this->CRUD_Model->insertQuestion($questionsInsert);
+			$this->CRUD_Model->insertQuestion($questionsInsert);
+			
+			$query2 = $this->DaoM->lastRow("question","id_question");
 			$reponses = $questions['reponses'];
 			foreach ($reponses as $reponse) {
 				$reponseInsert = array(
 					'reponse' => $reponse['reponse'],
 					'valeur_verite' => (($reponse['radio'] == "correct") ? 1 : 0),
-					'id_question' => $query2->last_row()['id_question']
+					'id_question' => $query2['id_question']
 				);
-				$query3 = $this->CRUD_Model->insertQuestion($reponseInsert);
-
+				$this->CRUD_Model->insertReponse($reponseInsert);
 			}
 		}
 		$data['qcm'] = $qcm;
@@ -58,19 +53,11 @@ class RH_Controllers extends CI_Controller
 
 		if ($this->db->trans_status() === FALSE) {
 			$this->db->trans_rollback();
+			show_error("insert failed");
 		} else {
 			$this->db->trans_commit();
 		}
 		show_error("erreur mirenty2 ");
-
-
-		// $this->load->model('CRUD_Model');
-		// // $inserted = $this->QCM_model->insertQCMData($qcmData);
-		// // if ($inserted) {
-		// // 	$response = array('success' => true, 'message' => 'Données insérées avec succès.');
-		// // } else {
-		// // 	$response = array('success' => false, 'message' => 'Échec de l\'insertion des données.');
-		// // }
 	}
 
 }

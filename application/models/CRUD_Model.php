@@ -7,17 +7,17 @@ class CRUD_Model extends CI_Model
     }
     function insertFiche($associative_array)
     {
-        $str = $this->db->insert_string("fiche_qcm", $associative_array);
+        return $this->DaoM->insert("fiche_qcm", $associative_array);
     
     }
     function insertQuestion($associative_array)
     {
-        $str = $this->db->insert_string("question", $associative_array);
+        return $str = $this->DaoM->insert("question", $associative_array);
     
     }
     function insertReponse($associative_array)
     {
-        $str = $this->db->insert_string("reponse", $associative_array);
+        return $str = $this->DaoM->insert("reponse", $associative_array);
     
     }
     function transformArray($originalArray)

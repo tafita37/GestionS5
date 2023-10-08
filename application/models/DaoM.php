@@ -1,7 +1,7 @@
 <?php
 class DaoM extends CI_Model
 {
-    
+
     /*
     @author mirenty ratsimbazafy mirentybg4@gmail.com
     */
@@ -17,13 +17,14 @@ class DaoM extends CI_Model
             echo $this->DaoModel->insert('personne',$data);
          */
     }
-    public function getAll($table_name) {
+    public function getAll($table_name)
+    {
         $query = $this->db->get($table_name);
-        
+
         if ($query->num_rows() > 0) {
             return $query->result_array();
         } else {
-            echo "La table {$table_name} EST VIDE !!!" ;
+            echo "La table {$table_name} EST VIDE !!!";
             return array();
         }
         /*
@@ -35,9 +36,10 @@ class DaoM extends CI_Model
                 }
         */
     }
-    public function selectWithCondition($tableName, $condition="1=1") {
+    public function selectWithCondition($tableName, $condition = "1=1")
+    {
         $query = "SELECT * FROM {$tableName} WHERE {$condition}";
-        $result =$this->db->query($query)->result_array();
+        $result = $this->db->query($query)->result_array();
         return $result;
         /*
             exemple : 
@@ -51,10 +53,32 @@ class DaoM extends CI_Model
                 }
         */
     }
-    public function deleteRows($tableName, $condition) {
+    public function deleteRows($tableName, $condition)
+    {
         $query = "DELETE FROM {$tableName} WHERE {$condition}";
-        $result =$this->db->query($query);
+        $result = $this->db->query($query);
         return $result;
     }
+    /*
+        $lastUser = $this->lastRow('utilisateurs', 'id');
+        $nomUtilisateur = $lastUser->nom_utilisateur;
+    */
+    public function lastRow($tableName, $primaryKeyColumn)
+    {
+        if (empty($tableName) || empty($primaryKeyColumn)) {
+            return false;
+        }
+        $this->db->order_by($primaryKeyColumn, 'desc');
+        $this->db->limit(1);
+        $query = $this->db->get($tableName);
+
+        if ($query->num_rows() > 0) {
+            $derniere_ligne = $query->row_array();
+            return $derniere_ligne;
+        } else {
+            return false;
+        }
+    }
+
 }
 ?>

@@ -120,31 +120,32 @@ VALUES ('QCM Informatique', '2023-09-29 10:00:00', 1);
 -- Insérer les questions
 INSERT INTO question (question, nbPoint, id_fiche_qcm)
 VALUES
-    ('Combien font 1 + 1 ?', 5, 2),
-    ('Quel est le langage de programmation le plus populaire a ITU?', 5, 2),
-    ('Quelle est la capitale de la France ?', 10, 2);
+    ('Combien font 1 + 1 ?', 5, 1),
+    ('Quel est le langage de programmation le plus populaire a ITU?', 5, 1),
+    ('Quelle est la capitale de la France ?', 10, 1);
 -- Insérer une question liée à une fiche QCM
 
 
 -- Insérer des réponses liées à une question
 INSERT INTO reponse (reponse, valeur_verite, id_question)
-VALUES ('Paris', 1,4),
-       ('Londres', 0,4),
-       ('Berlin', 0,4);
-
+VALUES ('1'  ,0,2),
+       ('10' ,0,2),
+       ('2'  ,1,2),
+       ('-50',0,2);
+       
 INSERT INTO reponse (reponse, valeur_verite, id_question)
-VALUES ('1'  ,0,5),
-       ('10' ,0,5),
-       ('2'  ,1,5),
-       ('-50',0,5);
+VALUES ('Paris', 1,1),
+       ('Londres', 0,1),
+       ('Berlin', 0,1);
+
 
 INSERT INTO reponse (reponse, valeur_verite, id_question)
 VALUES
-    ('Python', 0, 6),
-    ('Java', 1, 6),
-    ('C++', 0, 6),
-    ('JavaScript', 0, 6),
-    ('PHP', 1, 6);
+    ('Python'     ,0,3),
+    ('Java'       ,1,3),
+    ('C++'        ,0,3),
+    ('JavaScript' ,0,3),
+    ('PHP'        ,1,3);
 
 -- Insérer un résultat de test pour une personne
 INSERT INTO resultat_test_personne (score, id_cv)
