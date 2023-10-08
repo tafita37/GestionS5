@@ -1,4 +1,4 @@
-function ajouterQuestion(idForm, idContainer, idBouton, classeQuestion, phpScriptWithExtension) {
+function ajouterQuestion(idForm, idContainer, idBouton, classeQuestion, questionCounter, dropdownCounter, answerCounter, radioCounter) {
     // Récupérez les éléments du formulaire, du conteneur des questions et du bouton "Ajouter une question"
     const form = document.getElementById(idForm);
     const questionsContainer = document.getElementById(idContainer);
@@ -9,12 +9,29 @@ function ajouterQuestion(idForm, idContainer, idBouton, classeQuestion, phpScrip
         // Créer un élément de question
         const questionDiv = document.createElement("div");
         questionDiv.classList.add(classeQuestion); // Ajouter une classe CSS à la question
-
         // Créer un champ de texte pour la question
         const questionInput = document.createElement("input");
         questionInput.type = "text";
         questionInput.placeholder = "Entrez la question";
+        questionInput.name = "question" + questionCounter;
+        questionCounter++;
         questionDiv.appendChild(questionInput);
+
+        // Créer un dropdown pour les points de cette question
+        const pointsDropdown = document.createElement("select");
+        pointsDropdown.name = "nbpoint" + dropdownCounter;
+        dropdownCounter++;
+        pointsDropdown.classList.add("points-dropdown"); // Ajouter une classe CSS
+        pointsDropdown.innerHTML = `
+            <option value="1">1 point</option>
+            <option value="2">2 points</option>
+            <option value="3">3 points</option>
+            <option value="4">4 points</option>
+            <option value="5">5 points</option>
+        `;
+
+        // Ajouter le dropdown des points à la question
+        questionDiv.appendChild(pointsDropdown);
 
         // Créer un conteneur pour les réponses
         const answersDiv = document.createElement("div");
@@ -29,16 +46,50 @@ function ajouterQuestion(idForm, idContainer, idBouton, classeQuestion, phpScrip
             const answerInput = document.createElement("input");
             answerInput.type = "text";
             answerInput.placeholder = "Entrez une réponse";
+            answerInput.name = "reponse" + answerCounter;
+            answerCounter++;
 
-            // Créer une case à cocher pour spécifier si la réponse est correcte ou non
-            const isCorrectCheckbox = document.createElement("input");
-            isCorrectCheckbox.type = "checkbox";
-            isCorrectCheckbox.textContent = "Correcte";
+            const radioGroup = document.createElement("div");
+
+            // Créer le label pour le bouton radio correct
+            const correctLabel = document.createElement("label");
+            correctLabel.textContent = "vrai :";
+            correctLabel.setAttribute("for", "radio-correct" + radioCounter);
+            radioGroup.appendChild(correctLabel);
+
+            // Créer le bouton radio pour une réponse correcte
+            const correctRadio = document.createElement("input");
+            correctRadio.classList.add("trueradio");
+            correctRadio.required = true;
+            correctRadio.type = "radio";
+            correctRadio.name = "radio" + radioCounter;
+            correctRadio.value = "correct";
+            radioGroup.appendChild(correctRadio);
+
+            // Créer le label pour le bouton radio incorrect
+            const incorrectLabel = document.createElement("label");
+            incorrectLabel.textContent = "Faux :";
+            incorrectLabel.setAttribute("for", "radio-incorrect" + radioCounter);
+            radioGroup.appendChild(incorrectLabel);
+
+            // Créer un groupe de boutons radio pour spécifier si la réponse est correcte ou non
+            const incorrectRadio = document.createElement("input");
+            incorrectRadio.classList.add("falseradio");
+            incorrectRadio.style.cssText = "required";
+            incorrectRadio.type = "radio";
+            incorrectRadio.name = "radio" + radioCounter;
+            incorrectRadio.value = "incorrect";
+            radioGroup.appendChild(incorrectRadio);
+
+
+
+            radioCounter++;
 
             const lineBreak = document.createElement("br");
+
             // Ajouter les éléments de réponse au conteneur des réponses
             answersDiv.appendChild(answerInput);
-            answersDiv.appendChild(isCorrectCheckbox);
+            answersDiv.appendChild(radioGroup);
             answersDiv.appendChild(lineBreak);
         });
 
@@ -48,45 +99,9 @@ function ajouterQuestion(idForm, idContainer, idBouton, classeQuestion, phpScrip
 
         // Ajouter la question au conteneur des questions
         questionsContainer.appendChild(questionDiv);
+
+        // Créer un conteneur pour les réponses
+        answersDiv.style.maxHeight = "200px"; // Exemple de hauteur maximale
+        answersDiv.style.overflowY = "auto"; // Barre de défilement verticale si nécessaire
     });
-    //////////////////////////////////////////////////////////////
-
-    // Écoutez l'événement de soumission du formulaire
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        // Créez une structure pour stocker les questions et les réponses
-        const qcmData = [];
-
-        // Parcourez les éléments de questions
-        const questionElements = questionsContainer.getElementsByClassName(classeQuestion);
-        for (const questionElement of questionElements) {
-            const questionText = questionElement.querySelector('input[type="text"]').value;
-            const answerElements = questionElement.getElementsByClassName("answers");
-
-            // Créez un tableau pour stocker les réponses
-            const answers = [];
-            for (const answerElement of answerElements) {
-                const answerText = answerElement.querySelector('input[type="text"]').value;
-                const isCorrect = answerElement.querySelector('input[type="checkbox"]').checked;
-
-                // Ajoutez la réponse à la liste des réponses
-                answers.push({
-                    text: answerText,
-                    correct: isCorrect
-                });
-            }
-            // Ajoutez la question et ses réponses à la structure de données
-            qcmData.push({
-                question: questionText,
-                answers: answers
-            });
-        }
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", phpScriptWithExtension, true);
-        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhr.send(JSON.stringify(qcmData));
-    });
-
-
 }

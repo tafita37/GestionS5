@@ -130,7 +130,6 @@ CREATE table fiche_qcm(
     id_fiche_qcm serial primary key,
     nom_fiche varchar(50),
     date_creation timestamp,
-    total_point integer, 
     id_service int references services(id_service)
 );
 create table question(

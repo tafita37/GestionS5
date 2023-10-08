@@ -31,7 +31,7 @@ class DaoM extends CI_Model
             +   $toutes_les_personne =$this->DaoModel->selectWithCondition("personne");
                 for($ligne=0;$i<count($toutes_les_personne);$ligne++)
                 {
-                    echo $toutes_les_personne[$ligne]['nom'] ."<br>";
+                    echo $toutes_les_personne[$ligne]['nomColonne'] ."<br>";
                 }
         */
     }
