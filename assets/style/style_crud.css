@@ -1,0 +1,47 @@
+
+body{
+    background-color: #012C3D;
+  }
+.card_crud{
+border-radius: .5rem;
+padding: .5rem;
+max-width: 600px;
+margin: 0 auto;
+width: 100%;
+padding: 49px;
+background: #fff;
+box-shadow: 0 0 24px 0 rgb(0 0 0 / 12%);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5rem;
+    gap: .25em;
+  }
+  
+  .form-group:last-child {
+    margin: 0;
+  }
+  
+  .form-group > label {
+    font-weight: bold;
+    font-size: .8em;
+    color: #333;
+  }
+  
+  .form-group > input {
+    border-radius: .25em;
+    font-size: 1rem;
+    padding: .25em;
+  }
+  h3{
+    background: -webkit-linear-gradient(0deg,#333,#283557);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .step-title {
+    margin: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+  }

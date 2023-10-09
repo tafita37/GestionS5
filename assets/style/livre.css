@@ -1,0 +1,23 @@
+#livre_container{
+    max-width: 1000px;
+    padding: 9%;
+}
+#livre_row{
+    height: 354px;
+    padding: 2%;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+    animation: fade 250ms ease-in-out forwards;
+}
+#speciale{
+    border-radius:.25em;
+    color: #333;
+    background-color: transparent;
+    border-color: #333;
+}
+.form-group > label {
+    font-weight: bold;
+    font-size: .8em;
+    color: #333;
+  }

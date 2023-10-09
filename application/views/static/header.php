@@ -31,24 +31,24 @@
               </li>
               <li><a href="about.html" class="animsition-link">About</a></li>
               <li>
-                <a href="services.html" class="animsition-link">Services</a>
+                <a href="#" class="animsition-link">Connexion</a>
                 <ul>
-                  <li><a href="#">HR Consulting</a></li>
-                  <li><a href="#">Leadership Training</a></li>
                   <li>
-                    <a href="#">HR Management</a>
+                    <a href="#">HR</a>
                     <ul>
-                      <li><a href="#">Operational Management</a></li>
-                      <li><a href="#">Corporate Program</a></li>
-                      <li>
-                        <a href="#">Service 3</a>
-                        <ul>
-                          <li><a href="#">Service 1</a></li>
-                          <li><a href="#">Service 2</a></li>
-                          <li><a href="#">Service 3</a></li>
-                        </ul>
-                      </li>
+                      <li><a href="#">Se connecter</a></li>
                     </ul>
+                  </li>
+                  <li>
+                    <a href="#">Responsable technique</a>
+                    <ul>
+                      <li><a href="<?php echo site_url("Autre_Controller/formLoginResponsable"); ?>">Se connecter</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="<?php echo site_url("Autre_Controller/deconnexion");  ?>">
+                      Deconnexion 
+                    </a>
                   </li>
                 </ul>
               </li>
@@ -64,15 +64,3 @@
     </header> <!-- .templateux-navba -->
     
     
-    <div class="templateux-cover" style="background-image: url(<?php echo base_url("assets/images/hero_1.jpg"); ?>);">
-      <div class="container">
-        <div class="row align-items-lg-center">
-
-          <div class="col-lg-6 order-lg-1 text-center mx-auto">
-            <h1 class="heading mb-3 text-white" data-aos="fade-up">Blog Single Post</h1>
-            <p class="lead mb-5 text-white" data-aos="fade-up"  data-aos-delay="100">July 3, 2018 &bullet; by <a href="#" class="text-white">John Smith</a></p>
-          </div>
-
-        </div>
-      </div>
-    </div> <!-- .templateux-cover -->

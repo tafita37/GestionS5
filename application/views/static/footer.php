@@ -77,6 +77,7 @@
 
   <script src="<?php echo base_url("assets/js/scripts-all.js"); ?>"></script>
   <script src="<?php echo base_url("assets/js/main.js"); ?>"></script>
+  <script src="<?php echo base_url("assets/js/critereAnnonce.js") ?>"></script>
 
 </body>
 </html>
