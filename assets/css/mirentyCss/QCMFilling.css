@@ -1,9 +1,95 @@
-h6
-{
+/*style pour les questions*/
+h6 {
+    position: relative;
     color: rgb(20, 19, 19);
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    bottom: -22px;
+    right: 76px;
 }
-body
-{
-    font-weight : var(100%);
+/*style pour les texte questions*/
+h3 {
+    position: relative;
+    right: -27px;
+    margin-top: 10px;
+}
+body {
+    font-weight: var(100%);
     color: rgb(27, 27, 27);
+}
+.corpFormulaire {
+    position: relative;
+    width: 1100px;
+    margin-left: 30px;
+}
+.form-check {
+    margin-top: 30px;
+    margin-bottom: -20px;
+}
+/* Style pour la section principale */
+.features1 {
+    background-color: #f5f5f5; /* Couleur de fond */
+    padding: 40px 0; /* Espace autour du contenu */
+}
+
+/* Style pour le conteneur principal */
+.container-fluid {
+    max-width: 1200px; /* Largeur maximale du conteneur */
+    margin: 0 auto; /* Centrer le conteneur horizontalement */
+}
+#gridCheck1 {
+    position: relative;
+    left: 20px;
+}
+/* Style pour le titre de la fiche */
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Style pour les légendes de question */
+legend {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style pour les cases à cocher */
+.form-check-input {
+    margin-right: 10px;
+}
+
+/* Style pour les boutons de réinitialisation et de validation */
+.text-center {
+    margin-top: 20px;
+}
+
+.btn-secondary {
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Style pour les boutons lorsqu'ils sont survolés */
+.btn-secondary:hover {
+    background-color: #aaa;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
 }

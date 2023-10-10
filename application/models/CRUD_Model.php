@@ -3,7 +3,19 @@ class CRUD_Model extends CI_Model
 {
     function getFiche($condition = "1=1")
     {
-        return $this->DaoM->selectWithCondition("v_fiche_question_reponse", $condition);
+        return $this->DaoM->selectWithCondition("fiche_qcm", $condition);
+    }
+    function getFicheView($condition = "1=1")
+    {
+        return $this->DaoM->selectWithCondition("v_fiche_qestion_reponse", $condition);
+    }
+    function getQuestion($condition = "1=1")
+    {
+        return $this->DaoM->selectWithCondition("question", $condition);
+    }
+    function getReponse($condition = "1=1")
+    {
+        return $this->DaoM->selectWithCondition("reponse", $condition);
     }
     function insertFiche($associative_array)
     {

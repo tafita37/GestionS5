@@ -9,7 +9,8 @@ SELECT
     r.reponse,
     r.valeur_verite,
     fq.id_fiche_qcm as id_fiche,
-    fq.nom_fiche
+    fq.nom_fiche,
+    fq.id_service 
 FROM
     fiche_qcm fq
 JOIN

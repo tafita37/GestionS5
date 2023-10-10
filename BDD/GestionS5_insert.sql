@@ -125,28 +125,26 @@ VALUES
     ('Quelle est la capitale de la France ?', 10, 1);
 -- Insérer une question liée à une fiche QCM
 
-
--- Insérer des réponses liées à une question
 INSERT INTO reponse (reponse, valeur_verite, id_question)
-VALUES ('1'  ,0,2),
-       ('10' ,0,2),
-       ('2'  ,1,2),
-       ('-50',0,2);
+VALUES ('1'  ,0,10),
+       ('10' ,0,10),
+       ('2'  ,1,10),
+       ('-50',0,10);
        
-INSERT INTO reponse (reponse, valeur_verite, id_question)
-VALUES ('Paris', 1,1),
-       ('Londres', 0,1),
-       ('Berlin', 0,1);
 
 
 INSERT INTO reponse (reponse, valeur_verite, id_question)
 VALUES
-    ('Python'     ,0,3),
-    ('Java'       ,1,3),
-    ('C++'        ,0,3),
-    ('JavaScript' ,0,3),
-    ('PHP'        ,1,3);
+    ('Python'     ,0,11),
+    ('Java'       ,1,11),
+    ('C++'        ,0,11),
+    ('JavaScript' ,0,11),
+    ('PHP'        ,1,11);
 
+INSERT INTO reponse (reponse, valeur_verite, id_question)
+VALUES ('Paris', 1,12),
+       ('Londres', 0,12),
+       ('Berlin', 0,12);
 -- Insérer un résultat de test pour une personne
 INSERT INTO resultat_test_personne (score, id_cv)
 VALUES (80, 1);

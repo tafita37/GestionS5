@@ -1,4 +1,5 @@
--- Tables
+
+_-- Tables
 -- Statut matrimonial
 create table statut_matrimonial(
     id_statut_matrimonial serial primary key,
