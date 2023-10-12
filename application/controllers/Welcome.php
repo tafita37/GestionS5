@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
-
 	
 	public function accueil()
 	{
@@ -45,7 +44,9 @@ class Welcome extends CI_Controller {
 
 		$idStatuMatrimoniale=$this->input->post('idStatuMatrimoniale'); 
 		$nbrEnfant=$this->input->post('nbrEnfant');
+		//////////////////////////////////////////////////////////////////////////////
 	 	$competence=$this->input->post('competence');
+		/////////////////////////////////////////////////////////////////////////////
 		$casier=$this->input->post('exist');
 
 		// si les valeur ne sont pas inserer ou null redirection
@@ -61,8 +62,6 @@ class Welcome extends CI_Controller {
 			$idPersonne=$this->Cv->getLastPersonne();
 			$this->Cv->addNationalite_personne($idNationnalite,$idPersonne);
 			$this->Cv->addDiplome_filiere_personne($idDiplome,$idFiliere,$idPersonne);
-		
-			
 			
 			//mila ampina id annonce a la place de 1 azo @ url 
 			$idAnnonce=1;

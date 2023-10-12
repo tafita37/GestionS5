@@ -73,16 +73,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-$db['default'] = array(
+$db['default'] = [
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'postgres',
-	'password' => 'postgres',
-	'database' => 'rh',
-	'dbdriver' => 'Postgre',
+	'username' => 'mirenty',
+	'password' => '0000',
+	'database' => 'gestions5',
+	'dbdriver' => 'postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	// 'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
@@ -92,5 +92,8 @@ $db['default'] = array(
 	'compress' => FALSE,
 	'stricton' => FALSE,
 	'failover' => array(),
-	'save_queries' => TRUE
-);
+	'port' => '5432',
+	'db_debug' => TRUE,
+	'save_queries' => TRUE,
+	
+];
