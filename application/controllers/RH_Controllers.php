@@ -57,7 +57,7 @@ class RH_Controllers extends CI_Controller
 		} else {
 			$this->db->trans_commit();
 		}
-		show_error("erreur mirenty2 ");
+		// show_error("erreur mirenty2 ");
 	}
 
 }
