@@ -31,55 +31,50 @@ class Client_Controllers extends CI_Controller
         $this->load->view('pages/RemplissageQcm', $data);
         $this->load->view('static/footer');
     }
+
+    //tsy mazaka raha misy reponse roa marina ilay question
     public function inserResultatQCM()
     {
-        print_r($this->input->post());
         $score = 0;
         $this->load->model('CRUD_Model');
         $id_cv = $this->input->post('id_cv');
-        $nombreQuestion = $this->input->post('nombreQuestion');
-        
-        for ($i = 1; $i <= $nombreQuestion; $i++) {
+        $question = json_decode($this->input->post("question_reponses"), true);
+        $i = 1;
+        foreach ($question as $qr) {
             $nbpointQ = $this->input->post("nbpointQ$i");
             $reponsesCorrectes = 0;
-            // $question = json_decode($this->input->post("question_reponses"), true);
-            $question = json_decode(html_entity_decode($this->input->post("question_reponses")), true);
-            
-            // $question = json_decode($this->input->post("question_reponses"), true)[$i - 1]['question']['question'];
-            
-            echo "quest =>";
-            print_r($question);
-        //     $idQuestion = $this->CRUD_Model->getidquestion($question);
-        //     $nombreReponse = $this->CRUD_Model->getNombreReponseParQuestion($idQuestion);
-        //     $reponses = $this->CRUD_Model->getReponsesCorrectesPourQuestion($idQuestion);
-        //     $reponsesIncorrectes = 0;
-            
-        //     for ($u = 1; $u <= $nombreReponse; $u++) {
-        //         $checkboxName = "checkQ$i" . "R$u";
-        //         if ($this->input->post($checkboxName) == "on") {
-        //             // La réponse a été sélectionnée
-        //             if (in_array($u, $reponses)) {
-        //                 // La réponse sélectionnée est correcte
-        //                 $reponsesCorrectes++;
-        //             } else {
-        //                 // La réponse sélectionnée est incorrecte
-        //                 $reponsesIncorrectes++;
-        //             }
-        //         }
-        //     }
-        //     if ($reponsesIncorrectes > 0) {
-        //         // Si au moins une réponse incorrecte est sélectionnée, attribuer zéro point
-        //         $score += 0;
-        //     } else {
-        //         // Sinon, attribuer des points en fonction des réponses correctes
-        //         $score += ($reponsesCorrectes / $nombreReponse) * $nbpointQ;
-        //     }
+            $idQuestion = $qr['question']['id_question'];
+            $nombreReponse = $this->CRUD_Model->getNombreReponseParQuestion($idQuestion);
+            $reponses = $this->CRUD_Model->getReponsesCorrectesPourQuestion($idQuestion);
+            $reponsesIncorrectes = 0;
+
+            for ($u = 1; $u <= $nombreReponse; $u++) {
+                $checkboxName = "checkQ$i" . "R$u";
+                $selectedValue = $this->input->post($checkboxName);
+                foreach ($reponses as $reponse) {
+                    if ($selectedValue != null && $selectedValue != "") {
+                        echo "<br>reponse =" . $reponse['reponse'] . " value=" . $selectedValue . "<br>";
+                        if ($reponse['reponse'] == $selectedValue) {
+                            // La réponse sélectionnée est correcte
+                            $reponsesCorrectes++;
+                        } 
+                        else {
+                            // La réponse sélectionnée est incorrecte
+                            $reponsesIncorrectes++;
+                        }
+                    }
+                }
+            }
+            $score += ($reponsesCorrectes  * $nbpointQ);
+            $i++;
+            echo $score;
         }
-        // $resultatTestPersonne = array(
-        //     'score' => $score,
-        //     'id_cv' => $id_cv,
-        // );
-        // $this->CRUD_Model->insertResultatTestPersonne($resultatTestPersonne);
+
+        $resultatTestPersonne = array(
+            'score' => $score,
+            'id_cv' => $id_cv,
+        );
+        $this->CRUD_Model->insertResultatTestPersonne($resultatTestPersonne);
     }
 
 }

@@ -19,7 +19,12 @@
                   <!-- Vertical Form -->
                   <form action="inserResultatQCM" class="row g-3" method="post">
                     <input type="hidden" value=<?php echo $id_cv = 1; ?> name="id_cv">
-                    <input type="hidden" value=<?php echo json_encode(html_entity_encode $question_reponses); ?> name="question_reponses">
+                    <input type="hidden" name="question_reponses" id="question_reponses">
+                    <script>
+                      var tableauData = <?php echo json_encode($question_reponses); ?>;
+                      document.getElementById('question_reponses').value = JSON.stringify(tableauData);
+                    </script>
+
                     <?php
                     $i = 0;
                     foreach ($question_reponses as $qr) {
@@ -28,9 +33,10 @@
                       <div class="row mb-3">
                         <h3>
                           <legend>Question
-                            <?php echo $i +1 . "<br>"; ?>
+                            <?php echo $i + 1 . "<br>"; ?>
                           </legend>
-                          <input type="hidden" value=<?php echo $qr['question']['nbpoint']; ?> name="nbpointQ<?php echo $i+1?>">
+                          <input type="hidden" value=<?php echo $qr['question']['nbpoint']; ?>
+                            name="nbpointQ<?php echo $i + 1 ?>">
                         </h3>
                         <br>
                         <h6>
@@ -44,8 +50,10 @@
                           <div class="col-sm-10">
                             <div class="form-check">
                               <p class="questionCheck">
+                                <!-- <input class="form-check-input" type="checkbox" id="gridCheck1"
+                                  name="checkQ<? php /* echo $i + 1 ?>R<?php echo $u */?>"> -->
                                 <input class="form-check-input" type="checkbox" id="gridCheck1"
-                                  name="checkQ<?php echo $i+1 ?>R<?php echo $u?>">
+                                  name="checkQ<?php echo $i + 1 ?>R<?php echo $u ?>" value="<?php echo $reponse['reponse']; ?>">
                                 <label class="form-check-label" for="gridCheck1">
                                   <?php
                                   echo $reponse['reponse'];
